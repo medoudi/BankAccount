@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class BankAccount {
     private Long id;
     private BigDecimal balance;
-    Set<Operation> operations;
+    private Set<Operation> operations;
 
     public BankAccount(BigDecimal balance, Set<Operation> operations) {
         this.balance = balance;
@@ -31,13 +31,28 @@ public class BankAccount {
         }
     }
 
-    Set<Operation> getOperations() {
+    public Set<Operation> getOperations() {
         return operations;
+    }
+    public void setOperations(Set<Operation> operations) {
+        this.operations = operations;
     }
 
     public BigDecimal getBalance() {
         return balance;
     }
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 
     Operation createOperation(OperationType operationType, BigDecimal amount) {
         return new Operation(this, amount, LocalDate.now(), operationType);
