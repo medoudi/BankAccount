@@ -9,8 +9,6 @@ import com.exalt.company.demo.ports.outcome.IBankAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class BankAccountService implements IBankAccountService {

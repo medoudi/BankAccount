@@ -1,11 +1,12 @@
 package com.exalt.company.demo.domain;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class BankAccount {
+public class BankAccount implements Serializable {
     private Long id;
     private BigDecimal balance;
     private Set<Operation> operations;
@@ -13,6 +14,10 @@ public class BankAccount {
     public BankAccount(BigDecimal balance, Set<Operation> operations) {
         this.balance = balance;
         this.operations = operations.stream().collect(Collectors.toSet());
+    }
+
+    public BankAccount() {
+
     }
 
     public boolean withdraw(BigDecimal amount) {
@@ -27,7 +32,7 @@ public class BankAccount {
     public void deposit(BigDecimal amount) {
         if(amount != null) {
             balance = balance.add(amount);
-            operations.add(createOperation(OperationType.DEPOSIT, amount));
+           operations.add(createOperation(OperationType.DEPOSIT, amount));
         }
     }
 
