@@ -21,7 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     @InjectMocks BankAccountMapper bankAccountMapper;
     @Mock OperationMapper operationMapper;
 
-    @Test public void should_map_bank_account_from_data_base_to_domain() {
+    @Test 
+    public void should_map_bank_account_from_data_base_to_domain() {
         Account account = new Account(1L, BigDecimal.valueOf(20000L));
         BankAccount bankAccount = new BankAccount();
         bankAccountMapper.mapFromAccountToBankAccount(account, bankAccount);
@@ -30,7 +31,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
     }
 
-    @Test public void should_not_map_from_account_to_bankAccount_when_account_is_null() {
+    @Test
+    public void should_not_map_from_account_to_bankAccount_when_account_is_null() {
         Account account = null;
         BankAccount bankAccount = new BankAccount();
         bankAccount.setId(1L);
@@ -40,7 +42,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
     }
 
-    @Test public void should_not_map_from_account_to_bankAccount_when_bankaccount_is_null() {
+    @Test
+    public void should_not_map_from_account_to_bankAccount_when_bankaccount_is_null() {
         Account account = new Account(3L, BigDecimal.valueOf(3000L));
         BankAccount bankAccount = null;
         bankAccountMapper.mapFromAccountToBankAccount(account, bankAccount);
@@ -48,7 +51,8 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
     }
 
-    @Test public void should_map_from_bank_account_to_account() {
+    @Test 
+    public void should_map_from_bank_account_to_account() {
         Account account = new Account();
         BankAccount bankAccount = new BankAccount();
         bankAccount.setId(1L);
@@ -66,15 +70,17 @@ import static org.junit.jupiter.api.Assertions.assertNull;
         assertEquals(bankAccount.getOperations().size(), account.getOperations().size());
     }
 
-    @Test public void should_not_map_from_bankaccount_to_account_when_bankAccount_is_null() {
+    @Test 
+    public void should_not_map_from_bankaccount_to_account_when_bankAccount_is_null() {
         Account account = new Account(3L, BigDecimal.valueOf(3000L));
         BankAccount bankAccount = null;
-        bankAccountMapper.mapFromBankAccountToAccount(bankAccount, null);
+        bankAccountMapper.mapFromBankAccountToAccount(bankAccount, account);
         assertNull(bankAccount);
 
     }
 
-    @Test public void should_not_map_from_bankaccount_to_account_when_account_is_null() {
+    @Test 
+    public void should_not_map_from_bankaccount_to_account_when_account_is_null() {
         Account account = null;
         BankAccount bankAccount = new BankAccount();
         bankAccount.setId(1L);

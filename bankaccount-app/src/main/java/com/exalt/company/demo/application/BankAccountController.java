@@ -19,19 +19,20 @@ public class BankAccountController {
     }
 
     @PostMapping(value = "/{id}/deposit/{amount}")
-    void deposit(@PathVariable final Long id,
+    public void deposit(@PathVariable final Long id,
             @PathVariable final BigDecimal amount) {
         bankAccountService.deposit(id, amount);
 
     }
 
     @PostMapping(value = "/{id}/withdraw/{amount}")
-    void withdraw(@PathVariable final Long id,
+    public void withdraw(@PathVariable final Long id,
             @PathVariable final BigDecimal amount) {
         bankAccountService.withdraw(id, amount);
     }
     @GetMapping(value = "/{id}/list")
-    @ResponseBody Set<Operation> getHistory(@PathVariable final Long id) {
+    @ResponseBody
+    public Set<Operation> getHistory(@PathVariable final Long id) {
        return bankAccountService.getHistory(id);
     }
 }
